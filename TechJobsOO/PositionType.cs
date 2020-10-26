@@ -19,7 +19,7 @@ namespace TechJobsOO
         }
 
 
-        // TODO: Add custom Equals(), GetHashCode(), and ToString() methods.
+        // TODO: Add custom Equals(), GetHashCode(), and ToString() methods. DONE
 
         public override bool Equals(object obj)
         {

@@ -19,10 +19,10 @@ namespace TechJobsTests
         {
             Job job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
             Assert.AreEqual("Product tester", job1.Name);
-            Assert.AreEqual(new Employer("ACME"), job1.EmployerName);
-            Assert.AreEqual("Desert", job1.EmployerLocation);
-            Assert.AreEqual("Quality control", job1.JobType);
-            Assert.AreEqual("Persistence", job1.JobCoreCompetency);
+            Assert.AreEqual("ACME", job1.EmployerName.Value);
+            Assert.AreEqual("Desert", job1.EmployerLocation.Value);
+            Assert.AreEqual("Quality control", job1.JobType.Value);
+            Assert.AreEqual("Persistence", job1.JobCoreCompetency.Value);
             //is there a better way to do all of these on one line?
         }
 

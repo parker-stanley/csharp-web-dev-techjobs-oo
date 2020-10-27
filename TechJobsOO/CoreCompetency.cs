@@ -2,21 +2,21 @@
 
 namespace TechJobsOO
 {
-    public class CoreCompetency
+    public class CoreCompetency : JobField
     {
-        private int Id { get; }
-        private static int nextId = 1;
-        public string Value { get; set; }
+        //private int Id { get; }
+        //private static int nextId = 1;
+        //public string Value { get; set; }
 
         // TODO: Change the fields to auto-implemented properties. DONE
 
-        public CoreCompetency()
-        {
-            Id = nextId;
-            nextId++;
-        }
+        //public CoreCompetency()
+        //{
+        //    Id = nextId;
+        //    nextId++;
+        //}
 
-        public CoreCompetency(string v) : this()
+        public CoreCompetency(string v) : base()
         {
             Value = v;
         }
@@ -32,10 +32,10 @@ namespace TechJobsOO
             return HashCode.Combine(Id);
         }
 
-        public override string ToString()
-        {
-            return Value;
-        }
+        //public override string ToString()
+        //{
+        //    return Value;
+        //}
     }
 }
 

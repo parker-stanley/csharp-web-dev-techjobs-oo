@@ -68,7 +68,7 @@ namespace TechJobsTests
         {
             Job job1 = new Job("Product tester", new Employer(""), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
             Assert.AreEqual("\n" +
-                "ID: 7\n" +
+                "ID: 8\n" +
                 "Name: Product tester\n" +
                 "Employer: Data not available\n" +
                 "Location: Desert\n" +

@@ -45,6 +45,15 @@ namespace TechJobsOO
 
         public override string ToString()
         {
+
+            //is there a better way to do this?
+            //I could add curly braces here as well 
+            if (Name == "") this.Name = "Data not available";
+            if (EmployerName.Value == "") EmployerName.Value = "Data not available";
+            if (EmployerLocation.Value == "") EmployerLocation.Value = "Data not available";
+            if (JobType.Value == "") JobType.Value = "Data not available";
+            if (JobCoreCompetency.Value == "") JobCoreCompetency.Value = "Data not available";
+
             return ($"\n" +
                 $"ID: {this.Id}\n" +
                 $"Name: {this.Name}\n" +

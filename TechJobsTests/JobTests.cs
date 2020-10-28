@@ -50,7 +50,7 @@ namespace TechJobsTests
         public void ToStringPrintsJobValues()
         {
             Assert.AreEqual("\n" +
-                "ID: 7\n" +
+                "ID: 8\n" +
                 "Name: Product tester\n" +
                 "Employer: ACME\n" +
                 "Location: Desert\n" +
@@ -62,21 +62,23 @@ namespace TechJobsTests
         [TestMethod]
         public void ToStringWithEmptyFields()
         {
+            Job job4 = new Job("Product tester", new Employer(""), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+
             Assert.AreEqual("\n" +
-                "ID: 8\n" +
+                "ID: 10\n" +
                 "Name: Product tester\n" +
                 "Employer: Data not available\n" +
                 "Location: Desert\n" +
                 "Position Type: Quality control\n" +
                 "Core Competency: Persistence\n" +
-                "\n", job1.ToString());
+                "\n", job4.ToString());
         }
 
         [TestMethod]
         public void ToStringWithAllEmptyFields()
         {
-            Job job4 = new Job();
-            Assert.AreEqual("OOPS! This job does not seem to exist.", job4.ToString());
+            Job job5 = new Job();
+            Assert.AreEqual("OOPS! This job does not seem to exist.", job5.ToString());
         }
 
     }

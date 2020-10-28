@@ -6,12 +6,13 @@ namespace TechJobsTests
     [TestClass]
     public class JobTests
     {
-        //why won't this work?
-        //[TestInitialize]
-        //public void CreateJobObject()
-        //{
-        //Job job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
-        //}
+        Job job1;
+
+        [TestInitialize]
+        public void CreateJobObject()
+        {
+            job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        }
 
         [TestMethod]
         public void TestSettingJobId()
@@ -24,19 +25,16 @@ namespace TechJobsTests
         [TestMethod]
         public void TestJobConstructorSetsAllFields()
         {
-            Job job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
             Assert.AreEqual("Product tester", job1.Name);
             Assert.AreEqual("ACME", job1.EmployerName.Value);
             Assert.AreEqual("Desert", job1.EmployerLocation.Value);
             Assert.AreEqual("Quality control", job1.JobType.Value);
             Assert.AreEqual("Persistence", job1.JobCoreCompetency.Value);
-            //is there a better way to do all of these on one line?
         }
 
         [TestMethod]
         public void TestJobsForEquality()
         {
-            Job job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
             Job job2 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
             Assert.IsFalse(job1.Equals(job2));
         }
@@ -44,7 +42,6 @@ namespace TechJobsTests
         [TestMethod]
         public void ToStringPrintsWithBlankLines()
         {
-            Job job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
             Assert.IsTrue(job1.ToString().StartsWith("\n"));
             Assert.IsTrue(job1.ToString().EndsWith("\n"));
         }
@@ -52,7 +49,6 @@ namespace TechJobsTests
         [TestMethod]
         public void ToStringPrintsJobValues()
         {
-            Job job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
             Assert.AreEqual("\n" +
                 "ID: 7\n" +
                 "Name: Product tester\n" +
@@ -66,7 +62,6 @@ namespace TechJobsTests
         [TestMethod]
         public void ToStringWithEmptyFields()
         {
-            Job job1 = new Job("Product tester", new Employer(""), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
             Assert.AreEqual("\n" +
                 "ID: 8\n" +
                 "Name: Product tester\n" +
@@ -77,13 +72,12 @@ namespace TechJobsTests
                 "\n", job1.ToString());
         }
 
-        //bonus test for later
-        //[TestMethod]
-        //public void ToStringWithAllEmptyFields()
-        //{
-        //    Job job2 = new Job();
-        //    Assert.AreEqual("OOPS! This job does not seem to exist.", job2.ToString());
-        //}
+        [TestMethod]
+        public void ToStringWithAllEmptyFields()
+        {
+            Job job4 = new Job();
+            Assert.AreEqual("OOPS! This job does not seem to exist.", job4.ToString());
+        }
 
     }
 }

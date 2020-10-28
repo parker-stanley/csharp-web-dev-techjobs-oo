@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace TechJobsOO
 {
@@ -46,22 +47,56 @@ namespace TechJobsOO
         public override string ToString()
         {
 
-            //is there a better way to do this?
-            //I could add curly braces here as well 
-            if (Name == "") this.Name = "Data not available";
-            if (EmployerName.Value == "") EmployerName.Value = "Data not available";
-            if (EmployerLocation.Value == "") EmployerLocation.Value = "Data not available";
-            if (JobType.Value == "") JobType.Value = "Data not available";
-            if (JobCoreCompetency.Value == "") JobCoreCompetency.Value = "Data not available";
+            if (Name == null && EmployerName == null && EmployerLocation == null && JobType == null && JobCoreCompetency == null) 
+            {
+                return "OOPS! This job does not seem to exist.";
+            }
+
+            //could've also done an array here and used .Length instead of .Count
+            //string[] valueList = { Name, EmployerName.Value, EmployerLocation.Value, JobType.Value, JobCoreCompetency.Value};
+            List<string> valueList = new List<string>();
+            valueList.Add(Name);
+            valueList.Add(EmployerName.Value);
+            valueList.Add(EmployerLocation.Value);
+            valueList.Add(JobType.Value);
+            valueList.Add(JobCoreCompetency.Value);
+
+            //note, i originally had a foreach loop but couldn't reassign the variable
+            for (int i = 0; i < valueList.Count; i++)
+            {
+                if (valueList[i] == "")
+                {
+                    valueList[i] = "Data not available";
+                }
+            }
 
             return ($"\n" +
-                $"ID: {this.Id}\n" +
-                $"Name: {this.Name}\n" +
-                $"Employer: {this.EmployerName.Value}\n" +
-                $"Location: {this.EmployerLocation.Value}\n" +
-                $"Position Type: {this.JobType.Value}\n" +
-                $"Core Competency: {this.JobCoreCompetency.Value}\n" +
+                $"ID: {Id}\n" +
+                $"Name: {valueList[0]}\n" +
+                $"Employer: {valueList[1]}\n" +
+                $"Location: {valueList[2]}\n" +
+                $"Position Type: {valueList[3]}\n" +
+                $"Core Competency: {valueList[4]}\n" +
                 $"\n");
+
+            //original attempt at doing this, updated to loop through list
+            //if (Name == "") this.Name = "Data not available";
+            //if (EmployerName.Value == "") EmployerName.Value = "Data not available";
+            //if (EmployerLocation.Value == "") EmployerLocation.Value = "Data not available";
+            //if (JobType.Value == "") JobType.Value = "Data not available";
+            //if (JobCoreCompetency.Value == "") JobCoreCompetency.Value = "Data not available";
+
+            //return ($"\n" +
+            //    $"ID: {Id}\n" +
+            //    $"Name: {Name}\n" +
+            //    $"Employer: {EmployerName.Value}\n" +
+            //    $"Location: {EmployerLocation.Value}\n" +
+            //    $"Position Type: {JobType.Value}\n" +
+            //    $"Core Competency: {JobCoreCompetency.Value}\n" +
+            //    $"\n");
+
+            //note, the difference between using an array/list vs my original attempt is that
+            //with the original method the actual values were replaced
         }
 
     }
